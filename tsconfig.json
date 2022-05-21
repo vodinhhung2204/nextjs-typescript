@@ -17,7 +17,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/utils/*": ["./utils/*"],
-			"@/components/*": ["./components/*"]
+			"@/components/*": ["./components/*"],
+			"@/containers/*": ["./containers/*"]
 		},
 		"noImplicitAny": true,
 		"noImplicitThis": true,
