@@ -10,10 +10,12 @@ export default class MyDocument extends Document {
 				<Head>
 					{/* PWA primary color */}
 					<meta name="theme-color" content={theme.palette.primary.main} />
+					<link rel="shortcut icon" href="/static/favicon.ico" />
 					<link
 						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 					/>
+					{/* Inject MUI styles first to match with the prepend: true configuration. */}
 				</Head>
 				<body>
 					<Main />
@@ -49,7 +51,7 @@ MyDocument.getInitialProps = async (ctx) => {
 	// 3. app.render
 	// 4. page.render
 
-	const { renderPage: originalRenderPage } = ctx
+	const originalRenderPage = ctx.renderPage
 
 	// You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
 	// However, be aware that it can have global side effects.
@@ -58,13 +60,15 @@ MyDocument.getInitialProps = async (ctx) => {
 
 	ctx.renderPage = () =>
 		originalRenderPage({
-			// eslint-disable-next-line react/display-name
-			enhanceApp: (App: any) => (props) => <App emotionCache={cache} {...props} />,
+			enhanceApp: (App) =>
+				function EnhanceApp(props) {
+					return <App {...props} />
+				},
 		})
 
 	const initialProps = await Document.getInitialProps(ctx)
 	// This is important. It prevents emotion to render invalid HTML.
-	// See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
+	// See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
 	const emotionStyles = extractCriticalToChunks(initialProps.html)
 	const emotionStyleTags = emotionStyles.styles.map((style) => (
 		<style
@@ -77,7 +81,6 @@ MyDocument.getInitialProps = async (ctx) => {
 
 	return {
 		...initialProps,
-		// Styles fragment is rendered after the app and page rendering finish.
-		styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
+		emotionStyleTags,
 	}
 }
