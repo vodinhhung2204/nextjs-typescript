@@ -1,10 +1,13 @@
 import { makeStyles } from '@mui/styles'
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
 	customButton: {
 		color: '#FFFFFF',
-		backgroundColor: '#FF6464',
+		backgroundColor: 'blue',
 		'&:hover': {
 			backgroundColor: 'black',
 		},
+	},
+	customText: {
+		fontSize: '33px',
 	},
 }))
