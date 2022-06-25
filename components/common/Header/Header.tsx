@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { useStyles } from './styles'
 
 export const Header: any = () => {
+	const classes = useStyles()
+
 	return (
 		<Box
 			component="header"
 			className="bg-color-green"
 			sx={{
-				height: '44px',
+				height: '80px',
 				padding: '0 24px',
 				backgroundColor: '#F8F9FA',
 				boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)',
@@ -22,22 +24,22 @@ export const Header: any = () => {
 					height: '100%',
 					display: 'flex',
 					alignItems: 'center',
-					justifyContent: 'flex-end',
+					justifyContent: 'flex-start',
 				}}
 			>
 				{' '}
-				<div className="flex justify-end items-center h-100">
-					<div className="flex justify-between gap-x-4 items-center h-100 ">
-						<div className="cursor-pointer">
+				<div className="flex flex-col justify-end items-center h-full">
+					<div className="flex justify-between items-center h-full gap-x-4">
+						<Box className={classes.itemMenuHeader}>
 							<Link href="/">
-								<a>Home</a>
+								<a className={classes.itemMenuLink}>Home</a>
 							</Link>
-						</div>
-						<div className="cursor-pointer">
+						</Box>
+						<Box className={classes.itemMenuHeader}>
 							<Link href="/about">
-								<a>About</a>
+								<a className={classes.itemMenuLink}>About</a>
 							</Link>
-						</div>
+						</Box>
 					</div>
 				</div>
 			</Container>

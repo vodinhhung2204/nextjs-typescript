@@ -37,14 +37,14 @@ const styles = css`
 
 	@media (min-width: 1240px) {
 		.ac-container {
-			padding-left: 148px;
-			padding-right: 148px;
+			padding-left: 64px;
+			padding-right: 64px;
 		}
 	}
 
 	@media (min-width: 1440px) {
 		.ac-content {
-			max-width: 1248px;
+			max-width: 1440px;
 		}
 	}
 `
