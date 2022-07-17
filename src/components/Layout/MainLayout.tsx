@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Footer } from '@/components/common/index'
+import { Header, Footer } from '@/components/Common/index'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 

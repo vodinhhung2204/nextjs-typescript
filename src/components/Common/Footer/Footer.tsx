@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import { useStyles } from './styles'
+import { useStyles } from './styles.ts'
 
 export const Footer: any = () => {
 	const classes = useStyles()

@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '@mui/system'
 import Container from '@/components/Container'
 import Link from 'next/link'
-import { useStyles } from './styles'
+import { useStyles } from './styles.ts'
 
 export const Header: any = () => {
 	const classes = useStyles()
@@ -12,7 +12,7 @@ export const Header: any = () => {
 			component="header"
 			className="bg-color-green"
 			sx={{
-				height: '80px',
+				height: '60px',
 				padding: '0 24px',
 				backgroundColor: '#F8F9FA',
 				boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)',
@@ -32,7 +32,7 @@ export const Header: any = () => {
 					<div className="flex justify-between items-center h-full gap-x-4">
 						<Box className={classes.itemMenuHeader}>
 							<Link href="/">
-								<a className={classes.itemMenuLink}>Home</a>
+								<a className={classes.itemMenuLink}>Trang chủ</a>
 							</Link>
 						</Box>
 						<Box className={classes.itemMenuHeader}>

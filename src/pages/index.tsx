@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { MainLayout } from '@/components/layout/index'
+import { MainLayout } from '@/components/Layout/index'
 import Head from 'next/head'
 import Box from '@mui/material/Box'
 import HomePage from '@/containers/HomePage'

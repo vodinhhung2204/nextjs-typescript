@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
 		height: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
-		width: '60px',
+		padding: '0 12px',
 		'&:hover': {
 			borderBottom: '2px solid orange',
 		},

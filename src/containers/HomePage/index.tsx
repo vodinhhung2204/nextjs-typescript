@@ -2,11 +2,13 @@ import React from 'react'
 import Container from '@/components/Container'
 import Image from 'next/image'
 import { Button } from '@mui/material'
-import { useStyles } from './styles'
+import { useStyles } from './styles.ts'
 import { styled } from '@mui/material/styles'
 import { red, green, blue } from '@mui/material/colors'
-
-const Index = () => {
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { makeSelectData } from './selectors'
+const Index: React.FC = (props) => {
 	const classes = useStyles()
 
 	const Root = styled('div')(({ theme }) => ({
@@ -22,6 +24,8 @@ const Index = () => {
 			fontSize: '44px',
 		},
 	}))
+	const data = props.data
+	console.log('data tu reducer', data)
 	return (
 		<div className="flex flex-row flex-auto m-8 gap-[16px]">
 			<div className="flex-col max-w-[70%] justify-center ">
@@ -53,4 +57,8 @@ const Index = () => {
 		</div>
 	)
 }
-export default Index
+const mapStateToProps = createStructuredSelector({
+	data: makeSelectData(),
+})
+const mapDispatchToProps = (dispatch) => ({})
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

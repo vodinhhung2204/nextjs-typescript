@@ -16,9 +16,10 @@
 		"incremental": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/utils/*": ["./utils/*"],
-			"@/components/*": ["./components/*"],
-			"@/containers/*": ["./containers/*"]
+			"@/utils/*": ["./src/utils/*"],
+			"@/components/*": ["./src/components/*"],
+			"@/containers/*": ["./src/containers/*"],
+			"@/redux/*": ["./src/redux/*"]
 		},
 		"noImplicitAny": true,
 		"noImplicitThis": true,

@@ -4,6 +4,8 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import { createEmotionCache, theme } from '@/utils/index'
 import { ThemeProvider } from '@mui/material/styles'
 import '../styles/index.css'
+import { wrapper } from '@/redux/store'
+
 interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache
 }
@@ -20,4 +22,4 @@ const MyApp = (props: AppProps) => {
 	)
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
