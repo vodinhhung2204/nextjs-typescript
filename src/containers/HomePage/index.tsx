@@ -8,8 +8,16 @@ import { red, green, blue } from '@mui/material/colors'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { makeSelectData } from './selectors'
-const Index: React.FC = (props) => {
+import { Footer } from '@/components/Common'
+import Carousel from '@/components/Carousel/Carousel'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import ProductCardDemo from '@/components/ProductCardDemo'
+import Demo from 'public/images/demo.jpg'
+
+const Index: React.FC = (props: any) => {
 	const classes = useStyles()
+	const router = useRouter()
 
 	const Root = styled('div')(({ theme }) => ({
 		padding: theme.spacing(1),
@@ -26,34 +34,73 @@ const Index: React.FC = (props) => {
 	}))
 	const data = props.data
 	console.log('data tu reducer', data)
+	const luxuryProducts = [
+		{
+			images: Demo,
+			description: 'hihihihi',
+			price: 500,
+			salePrice: 300,
+			slug: '/xxx',
+			sold: 300,
+			title: 'Title',
+			likes: 300,
+			inStock: 400,
+			_id: 1,
+			tags: ['tag1', 'tag2'],
+		},
+		{
+			images: Demo,
+			description: 'hihihihi',
+			price: 500,
+			salePrice: 300,
+			slug: '/xxx',
+			sold: 300,
+			title: 'Title',
+			likes: 300,
+			inStock: 400,
+			_id: 1,
+			tags: ['tag1', 'tag2'],
+		},
+	]
 	return (
-		<div className="flex flex-row flex-auto m-8 gap-[16px]">
-			<div className="flex-col max-w-[70%] justify-center ">
-				<div className="md:text-[44px] font-bold flex sm:text-[28px]">Homepage</div>
-
-				<div className="text-[16px]">
-					<Root>Content</Root>
-				</div>
+		<div className="max-w-screen flex flex-row flex-auto m-8 gap-[16px]">
+			<div className="flex-col justify-center w-full ">
+				<Carousel />
 				<div className="h-auto flex mt-[16px]">
-					<Button
-						variant="contained"
-						className={classes.customButton}
-						onClick={() => console.log('button action')}
-					>
-						Button
-					</Button>
+					<section id="luxury-product" className="pb-4 w-full">
+						<div className="w-full rounded-t md:h-14 h-16 mb-2 bg-indigo-500 flex items-center justify-between">
+							<span className="ml-4 text-2xl uppercase font-semibold text-white">
+								Hàng cao cấp bán chạy
+							</span>
+							<span className="hover:text-gray-200 text-white mr-2">
+								<Link href={'/products/categories/best-sale'}>
+									<a>
+										<span className="hidden md:block">Xem thêm</span>
+										<span className="md:hidden">&#10093;</span>
+									</a>
+								</Link>
+							</span>
+						</div>
+						<div className="grid grid-cols-1 md:grid-cols-4 md:gap-6 gap-0 w-full">
+							<div
+								className="w-full shadow relative border p-4 my-3 md:my-0 h-96 md:h-auto cursor-pointer"
+								onClick={() => router.push('/san-pham/danh-muc-chinh/cao-cap')}
+							>
+								<Image
+									src={Demo}
+									alt="product"
+									className="md:object-cover object-fill"
+									layout="fill"
+									priority
+								></Image>
+							</div>
+							{luxuryProducts.map((product) => (
+								<ProductCardDemo key={product._id} {...product} />
+							))}
+						</div>
+					</section>
 				</div>
 			</div>
-			{/* <div className="flex-col max-w-[30%] ">
-				<Image
-					src="https://picsum.photos/seed/picsum/200/300"
-					layout="fixed"
-					height="300"
-					width="300"
-					className="rounded-full md:width-[300px] height-[300px] sm: width-[200px] height-[200px]"
-					alt="avatar"
-				></Image>
-			</div> */}
 		</div>
 	)
 }

@@ -5,10 +5,12 @@ export const useStyles = makeStyles((theme) => ({
 		height: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: '0 12px',
+		// padding: '0 12px',
+		minHeight: '44px',
 		'&:hover': {
 			borderBottom: '2px solid orange',
 		},
+		listStyleType: 'none',
 	},
 	itemMenuLink: {
 		height: '100%',
