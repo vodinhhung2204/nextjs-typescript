@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { HYDRATE } from 'next-redux-wrapper'
-import home from '@/containers/HomePage/reducer.ts'
+import home from '@/containers/HomePage/reducer'
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */

@@ -1,12 +1,10 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { MainLayout } from '@/components/Layout/index'
 import Head from 'next/head'
-import Box from '@mui/material/Box'
 import HomePage from '@/containers/HomePage'
-import Loading from '@/components/Loading/Loading'
+import { Loading } from '@/components/index'
 import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
